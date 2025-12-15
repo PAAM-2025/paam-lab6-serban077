@@ -17,7 +17,7 @@
         android:theme="@style/Theme.LAB6">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBrG1fYI37zqNIAzlK_t30EKXr1kBgXLqk" />
+            android:value="" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
