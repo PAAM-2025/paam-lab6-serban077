@@ -78,6 +78,14 @@ class MainActivity : ComponentActivity() {
                         LocationComposable()
                     }
                     // TODO 2: Add a button to call getCurrentLocation for retrieving current location
+                    Button(
+                        onClick = { getCurrentLocation() },
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .padding(bottom = 16.dp)
+                    ) {
+                        Text(text = "Get Current Location")
+                    }
                 }
 
             }
@@ -149,6 +157,12 @@ class MainActivity : ComponentActivity() {
                 return
             }
             // TODO 3 Add a fusedLocationClient function to retrieve the current location and set the marker to point to that location
+            fusedLocationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, CancellationTokenSource().token)
+                .addOnSuccessListener { location: Location? ->
+                    location?.let {
+                        latLngState.value = LatLng(it.latitude, it.longitude)
+                    }
+                }
         }
     }
 
@@ -169,4 +183,3 @@ class MainActivity : ComponentActivity() {
     }
 
 }
-
